@@ -10,7 +10,7 @@ import requests
 import random
 import ast
 
-client = OpenAI(api_key=os.environ['OPEN_API_KEY'])
+client = OpenAI(api_key=st.secrets['OPEN_API_KEY'])
 choice = ''
 result = []
 pre_result = []
