@@ -1,3 +1,7 @@
+import json
+import re
+from pydantic_core.core_schema import WhenUsed
+import requests
 import time
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -12,6 +16,11 @@ from fpdf import FPDF
 from pdf import read_pdf, create_pdf, summarize_text
 from chatbot import chatbot_response
 from login import init_db, login, signup, logout
+from Quiz import *
+from youtube_videos_summarizer import *
+from FoxiLearning import *
+
+
 
 client = OpenAI(api_key=os.environ['OPEN_API_KEY'])
 
@@ -323,8 +332,85 @@ def main():
                     "content": response
                 })
 
-        def quiz():
-            st.title("Quiz")
+        def youtube_summarizer():
+            st.markdown('<h1 class="youtube-title">🎥 YouTube Video Summarizer</h1>',
+                unsafe_allow_html=True)
+            st.subheader(
+            "Analyze and summarize YouTube content to find the best video for your needs."
+            )
+
+            # User input section
+            st.markdown("### 📝 Please enter your question and provide YouTube links")
+            user_input = st.text_area(
+            "Type your question and YouTube links:",
+            height=50,
+            help="You can enter one or multiple YouTube links.")
+
+            # Get Summaries button
+            if st.button("Get Summaries"):
+                if user_input:
+                    # Step 1: Extract YouTube links from the user prompt
+                    youtube_links = get_link_from_prompt(user_input)
+        
+                    if not youtube_links:
+                        st.error("No valid YouTube links found in the prompt.")
+                    else:
+                        # Step 2: Extract video IDs from the links
+                        extracted_ids = extract_youtube_ids(youtube_links)
+        
+                        # Step 3: Get transcripts for the videos
+                        transcripts = get_transcripts(youtube_links, extracted_ids)
+        
+                        # Step 4: Process transcripts
+                        processed_transcripts = process_transcripts(
+                            transcripts, youtube_links)
+        
+                        # Step 5: Get titles for the videos
+                        titles = [get_youtube_title(link) for link in youtube_links]
+        
+                        # Step 6: Summarize the transcripts
+                        summaries = summarize_video_transcript(processed_transcripts,
+                                                               titles)
+        
+                        # Step 7: Answer based on summaries
+                        answer = answer_based_on_summaries(summaries, user_input)
+        
+                        # Display summaries in a user-friendly design
+                        st.header("🔍 Video Summaries")
+                        for summary in summaries:
+                            st.markdown(f'<div class="summary-box">{summary}</div>',
+                                        unsafe_allow_html=True)
+        
+                        # Display the evaluation and recommendation for videos
+                        st.header("🎯 Evaluation of Videos")
+                        st.markdown(f'<div class="evaluation">{answer}</div>',
+                                    unsafe_allow_html=True)
+                else:
+                    st.error(
+                        "⚠️ Please enter a question and YouTube links to proceed.")
+
+        def Youtube_recommend():
+            # Set up the title and instructions
+            st.title("Video Content Search ")
+
+            # Ask the user to input their search query
+            user_input = st.text_input("Enter the topic you are interested in:")
+
+            if st.button("Submit"):
+                Youtube_search(user_input)
+                # Path to the HTML file
+                html_file_path = os.path.abspath('youtube_videos.html')
+                # Check if the HTML file exists
+                if os.path.exists(html_file_path):
+                    # Read the HTML file content
+                    with open(html_file_path, 'r') as f:
+                        html_content = f.read()
+
+                    # Display the HTML content in Streamlit
+                    st.components.v1.html(html_content, height=600, scrolling=True)
+
+                else:
+                    st.error("HTML file not found.")
 
         # Sidebar navigation
         st.sidebar.title(f"Welcome, {st.session_state.username}!")
@@ -337,6 +423,8 @@ def main():
         pdf_button = st.sidebar.button("Summarize PDF notes", key="pdf_button")
         chatbot_button = st.sidebar.button("Chatbot", key="chatbot_button")
         quiz_button = st.sidebar.button("Quiz", key="quiz_button")
+        youtube_summarize_button = st.sidebar.button("Youtube Videos Summarizer", key="youtube_summarize_button")
+        youtube_recommendation_button = st.sidebar.button("Youtube Content Recommendation", key="youtube_content_button")
         logout_button = st.sidebar.button("Logout", key="logout_button")
 
         # Page routing based on button clicks
@@ -352,6 +440,10 @@ def main():
             st.session_state.page = "chatbot"
         elif quiz_button:
             st.session_state.page = "quiz"
+        elif youtube_summarize_button:
+            st.session_state.page = "youtube_summarize"
+        elif youtube_recommendation_button:
+            st.session_state.page = "youtube_recommendation"
         elif logout_button:
             logout()
 
@@ -365,7 +457,11 @@ def main():
         elif st.session_state.page == "chatbot":
             chatbot()
         elif st.session_state.page == "quiz":
-            quiz()
+            Quiz()
+        elif st.session_state.page == "youtube_summarize":
+            youtube_summarizer()
+        elif st.session_state.page == "youtube_recommendation":
+            Youtube_recommend()   
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-entrypoint = "main.py"
-modules = ["python-3.11"]
+modules = ["python-3.8"]
+run = "streamlit run main.py"
 
 [nix]
 channel = "stable-24_05"
@@ -11,9 +11,9 @@ language = "python3"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["python3", "main.py"]
+run = ["sh", "-c", "streamlit run main.py"]
 deploymentTarget = "cloudrun"
 
 [[ports]]
-localPort = 8501
+localPort = 8505
 externalPort = 80
