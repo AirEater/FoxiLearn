@@ -63,7 +63,7 @@ def Youtube_search(user_input):
         # Create an HTML file to display the videos
         with open('youtube_videos.html', 'w') as f:
             f.write(
-                '<html><head><style>body{color:white}</style></head><body>\n')
+                '<html><head><style>body{color:black}</style></head><body>\n')
             f.write(f'<h1>Search results for "{user_input}"</h1>\n')
 
             videos = data['items']
