@@ -12,6 +12,7 @@ from fpdf import FPDF
 
 client = OpenAI(api_key=os.environ['OPEN_API_KEY'])
 
+
 def summarize_text(text):
     system_prompt = """
   You are a PDF summarizer. You will summarize the content in the PDF to well-structured note for user to read. Highlight the key points, important concepts, and any relevant details that would help someone quickly understand the material. Make the summary concise, organized, and easy to read, ideally in bullet points or short paragraphs, so that a student can grasp the main ideas without needing to read the entire document.Please organize the key points into clearly defined sections, if possible. Each section should focus on a specific theme or topic for better clarity and understanding. Provide example if suitable.
