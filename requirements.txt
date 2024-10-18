@@ -79,16 +79,3 @@ urllib3==2.2.3
 watchdog==5.0.3
 wcwidth==0.2.13
 youtube-transcript-api==0.6.2
-json
-re
-requests
-time
-streamlit
-youtube_transcript_api
-openai
-os
-graphviz
-IPython
-tempfile
-PyPDF2
-fpdf
