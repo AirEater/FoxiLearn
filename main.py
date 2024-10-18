@@ -22,7 +22,7 @@ from FoxiLearning import *
 
 
 
-client = OpenAI(api_key=os.environ['OPEN_API_KEY'])
+client = OpenAI(api_key=st.secrets['OPEN_API_KEY'])
 
 # Initialize session state variables
 if 'authenticated' not in st.session_state:
