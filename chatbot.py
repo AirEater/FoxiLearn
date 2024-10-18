@@ -19,7 +19,7 @@ def chatbot_response(user_input):
                 Answer (if have)
                 Explanation
                 Example
-                ``` Otherwise if it is a non-academic problems, output 'Sorry, I cannot help with this''"""
+                ```"""
             },
             {
                 'role': 'user',
