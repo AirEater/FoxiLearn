@@ -89,17 +89,21 @@ def home():  #main
         .get-started a:hover {
             background-color: #ff451a;
         }
-
+        .block-container {
+            padding-top: 1rem;
+            padding-bottom: 0rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
     </style>
 
     <div class="title">FoxiLearn</div>
     <div class="subtitle"><h2>Your Smart Learning Assistant</h2></div>
-
+    <hr>
     <div class="description">
         FoxiLearn offers powerful tools to streamline your learning experience. Whether you're analyzing YouTube video content, generating mind maps, 
         summarizing PDF notes, or creating quizzes, we've got you covered. Enhance your productivity and make learning more efficient with FoxiLearn.
     </div>
-
     <div class="features">
         <div class="feature-box">
             <div class="feature-title">YouTube Topic Relevancy Checker</div>
@@ -212,7 +216,7 @@ def pdf():
 
 def chatbot():
     st.title("FoxiLearn Chatbot")
-
+    st.divider()
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
