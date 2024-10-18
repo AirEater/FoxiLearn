@@ -325,10 +325,10 @@ def main():
 
         def quiz():
             st.title("Quiz")
-            st.write("This is the quiz page.")
 
         # Sidebar navigation
         st.sidebar.title(f"Welcome, {st.session_state.username}!")
+        st.sidebar.divider()
         st.sidebar.title("Navigation")
 
         # Create buttons with unique keys
@@ -367,8 +367,6 @@ def main():
         elif st.session_state.page == "quiz":
             quiz()
 
-
-# ... (keep all other functions like home(), check(), pdf(), chatbot(), and quiz() as they were)
 
 if __name__ == "__main__":
     main()
