@@ -47,83 +47,81 @@ def main():
         def home():  #main
             st.markdown("""
             <style>
-                body {
-                    padding: 0px;
-                    margin: 0px;
-                    font-family: 'Arial', sans-serif;
-                    background-color: #f87a08;
-                }
-                .title {
-                    color: #ff5733;
-                    text-align: center;
-                    font-size: 40px; /* Reduced font size */
-                    font-weight: bold;
-                    margin-top: 30px; /* Reduced top margin */
-                }
-                .subtitle {
-                    color: #5a5a5a;
-                    text-align: center;
-                    font-size: 22px; /* Slightly smaller font size */
-                    margin-bottom: 20px; /* Reduced bottom margin */
-                }
-                .description {
-                    margin: 0 auto;
-                    max-width: 700px; /* Reduced max-width for compact design */
-                    color: white;
-                    font-size: 16px; /* Slightly smaller font */
-                    text-align: center;
-                    padding: 10px; /* Added some padding for breathing space */
-                }
-                .features {
-                    margin: 20px auto; /* Reduced margin */
-                    max-width: 1100px;
-                    display: flex;
-                    justify-content: space-around;
-                    flex-wrap: wrap;
-                }
-                .feature-box {
-                    background-color: #2C3333;
-                    padding: 20px; /* Reduced padding */
-                    width: 220px; /* Slightly narrower box */
-                    text-align: center;
-                    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-                    border: 8px dotted white; /* Slightly reduced border size */
-                    margin: 15px; /* Reduced margin */
-                    transition: transform 0.3s, box-shadow 0.3s;
-                }
-                .feature-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
-                }
-                .feature-title {
-                    font-size: 20px; /* Slightly smaller title font */
-                    font-weight: bold;
-                    color: #ff5733;
-                    margin-bottom: 8px; /* Reduced margin */
-                }
-                .get-started {
-                    margin: 30px auto; /* Reduced margin */
-                    text-align: center;
-                }
-                .get-started a {
-                    text-decoration: none;
-                    color: white;
-                    background-color: #ff5733;
-                    padding: 12px 25px; /* Reduced padding */
-                    border-radius: 20px;
-                    font-size: 16px; /* Slightly smaller font */
-                    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-                }
-                .get-started a:hover {
-                    background-color: #ff451a;
-                }
-                .block-container {
-                    padding-top: 1rem;
-                    padding-bottom: 0rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
-            </style>
+    body {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Roboto', sans-serif; /* Changed font */
+        background-color: #f9f9f9; /* Lighter background */
+    }
+    .title {
+        color: #333; /* Softer title color */
+        text-align: center;
+        font-size: 36px; /* Adjusted size */
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    .subtitle {
+        color: #666; /* Softer subtitle color */
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .description {
+        margin: 0 auto;
+        max-width: 700px;
+        color: #555; /* Softer text color */
+        font-size: 16px;
+        text-align: center;
+        padding: 20px;
+    }
+    .features {
+        margin: 20px auto;
+        max-width: 1100px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .feature-box {
+        background-color: #ffffff; /* White background for feature boxes */
+        padding: 15px;
+        width: 220px;
+        text-align: center;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        border-radius: 10px; /* Rounded corners */
+        margin: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .feature-title {
+        font-size: 18px; /* Adjusted size */
+        font-weight: bold;
+        color: #5DADE2; /* Softer title color */
+        margin-bottom: 8px;
+    }
+    .get-started {
+        margin: 30px auto;
+        text-align: center;
+    }
+    .get-started a {
+        text-decoration: none;
+        color: white;
+        background-color: #5DADE2; /* Softer button color */
+        padding: 15px 30px; /* Increased padding */
+        border-radius: 25px; /* More rounded */
+        font-size: 16px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .get-started a:hover {
+        background-color: #49A6D4; /* Slightly darker hover color */
+    }
+    .block-container {
+        padding: 2rem 5rem; /* Increased padding for breathing space */
+    }
+</style>
+
 
             <div class="title">FoxiLearn</div>
             <div class="subtitle"><h2>Your Smart Learning Assistant</h2></div>
