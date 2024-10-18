@@ -51,7 +51,7 @@ def main():
                     padding: 0px;
                     margin: 0px;
                     font-family: 'Arial', sans-serif;
-                    background-color: #f5f5f5;
+                    background-color: #f87a08;
                 }
                 .title {
                     color: #ff5733;
