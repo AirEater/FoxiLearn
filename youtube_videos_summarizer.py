@@ -7,7 +7,7 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, No
 import os
 
 # Initialize the OpenAI client
-client = OpenAI(api_key=os.environ["OPEN_API_KEY"])
+client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
 
 
 def get_link_from_prompt(prompt):
